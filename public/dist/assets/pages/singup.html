@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link href="../css/app.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800&display=swap" rel="stylesheet">
+	<title>Registration</title>
+</head>
+<body>
+	<header class="header">
+		<div class="mainHeader header__mainHeader">
+			<div>
+				<img class="mainHeader__img" src="../img/logo.png" alt="virtus">
+			</div>
+			<div class="mainHeader__block">
+		    	<div class="mainHeader__button">
+	        		<button id="addUsers" class="mainHeader__btn" name="add">Add <i class="fas fa-plus"></i></button>
+	        	</div>
+	        	<div class="mainHeader__nav">
+	        		<ul class="mainHeader__list">
+						<li><a class="mainHeader__link-logo" href="#" target="_blank"><i class="fas fa-search fa-lg"></i></a></li>
+						<li><a class="mainHeader__link-logo" href="#" target="_blank"><i class="far fa-bell fa-lg"></i></a></li>
+						<li><a class="mainHeader__link-logo" href="#" target="_blank"><i class="fas fa-angle-down fa-lg"></i></a></li>
+					</ul>
+	        	</div>
+        	</div>
+        </div>
+    </header>
+    <section class="sectionHeader">
+    	<div class="sectionHeader__block">
+    		<div class="sectionHeader__actions">
+    			<div class="sectionHeader__btn">
+    				<button id="btnInbox" class="sectionHeader__btn-inbox"><i class="far fa-user-circle fa-lg"></i> Inbox</button>
+    			</div>
+    			<div class="sectionHeader__btn">
+    				<button id="btnSent" class="sectionHeader__btn-sent"><i class="fas fa-paper-plane fa-lg"></i> Sent</button>
+    			</div>
+    			<div class="sectionHeader__btn">
+    				<button id="btnTrash" class="sectionHeader__btn-trash"><i class="fas fa-trash fa-lg"></i> Trash</button>
+    			</div>
+    		</div>
+    		<div class="sectionHeader__messages">
+    			<div class="sectionHeader__btnfilter">
+    				<p>Filter messages:</p>
+    				<button id="btnFilter" class="sectionHeader__btn-filter">Date <i class="fas fa-angle-down fa-lg"></i></button>
+    			</div>  
+    		</div>
+    	</div>
+    </section>
+    <acide class="main-acide">
+		<div class="main-acide__nav">
+			<ul class="main-acide__list">
+				<li><a class="main-acide__link-logo" href="#" target="_blank"><i class="fa fa-home fa-lg"></i></a></li>
+				<li><a class="main-acide__link-logo" href="#" target="_blank"><i class="fa fa-bars fa-lg"></i></a></li>
+				<li><a class="main-acide__link-logo" href="#" target="_blank"><i class="fas fa-chart-line fa-lg"></i></a></li>
+				<li><a class="main-acide__link-logo" href="#" target="_blank"><i class="fa fa-envelope fa-lg"></i></a></li>
+				<li><a class="main-acide__link-logo" href="#" target="_blank"><i class="fas fa-user-friends fa-lg"></i></a></li>
+			</ul>
+		</div>
+	</acide>
+	<section class="wrapper">
+		<div class="wrapper__main">
+			<div class="wrapper__close">
+				<i class="far fa-window-close fa-lg"></i>
+			</div>
+			<h1>Sign up</h1>
+			<a href="../../index.html" class="wrapper__href">Existing member?</a>
+
+			<form class="wrapper__form" id="formWithValidator" action="#">
+				<div class="wrapper__input">
+		  			<input id="emailAddress" class="field" name="email" type="email" placeholder="Email...">
+		  		</div>
+		  		<div class="wrapper__input">
+		  			<input id="password"  class="field" name="password" type="password" placeholder="Password..." pattern="[a-zA-Zа-яА-ЯёЁ0-9]{6,90}" title="Password must be at least 6 characters">
+		  		</div>
+		  		<div class="wrapper__input">
+		  			<input type="password" name="confirmPassword" class="field" id="confirmPassword" placeholder="Confirm password..." pattern="[a-zA-Zа-яА-ЯёЁ0-9]{6,90}" title="Password must be at least 6 characters">
+		  		</div>
+		  		
+		  		<input id="check" class="wrapper__button" type="submit" name="check" value="Sing up"></input>
+			</form>
+		</div>
+	</section>
+
+
+
+<script src="../js/app.js"></script></body>
+</body>
+</html>
