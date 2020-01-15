@@ -1,8 +1,8 @@
 let form = document.getElementById('formWithValidator');
 let checkBtn = document.getElementById('check');
+let name = document.getElementById('userName');
 let email = document.getElementById('emailAddress');
 let pass1 = document.getElementById('password');
-let pass2 = document.getElementById('confirmPassword');
 let fields = document.querySelectorAll('.field');
 
 let generateError = function (text) {
@@ -43,33 +43,30 @@ form.addEventListener('submit', function(event) {
 	checkFields()
 })*/
 
-
-//sendRequest
-
-function CreateUser(email, password, confirmPassword) {
+function CreateUser(name, email, password) {
+	this.name = name;
 	this.email = email;
 	this.password = password;
-	this.confirmPassword = confirmPassword;
 }
 
 function singUp() {
+	let name =form.name.value;
 	let email = form.email.value;
 	let password =form.password.value;
-	let confirmPassword =form.confirmPassword.value;
 
-	let user = new CreateUser(email, password, confirmPassword);
+	let user = new CreateUser(name, email, password);
 	return user;
 }
 
-function sendLogin() {
-	const urlLogin = 'http://localhost:3000/api/users/login';
+function sendSingup() {
+	const urlSingup = 'http://localhost:3000/api/users';
 	const headers = {
 		'Content-Type': 'application/json',
 	}
 
 	let user = singUp(); 
 
-	return fetch(urlLogin, {
+	return fetch(urlSingup, {
 		method: 'POST',
 		body: JSON.stringify(user),
 		headers: headers
@@ -79,8 +76,16 @@ function sendLogin() {
 }
 
 check.onclick = () => {
-	sendLogin().then(data => {
+	sendSingup().then(data => {
 		console.log(data);
 	})
 	.catch(err => console.log(err))
+}
+
+//close form
+showNone.onclick = function hidden() {
+	display = document.getElementById('window').style.display;
+	if (display == 'block') {
+		document.getElementById('window').style.display = 'none';
+	}
 }

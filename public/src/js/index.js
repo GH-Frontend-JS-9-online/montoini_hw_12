@@ -1,9 +1,7 @@
 let form = document.getElementById('formWithValidator');
 let checkBtn = document.getElementById('check');
-let name = document.getElementById('nameUser');
 let email = document.getElementById('emailAddress');
 let pass1 = document.getElementById('password');
-let pass2 = document.getElementById('confirmPassword');
 let fields = document.querySelectorAll('.field');
 
 
@@ -32,43 +30,22 @@ let checkFields = function () {
 	}
 }
 
-function(state) {
-	document.getElementById('window').style.display = state;
-}
-
-/*let chekPassword = function () {
-	if (pass1.value !== pass2.value) {
-		let error = generateError('Your password does not match')
-		pass2.parentElement.insertBefore(error, pass2.nextSibling)
-	}
-}
-
-form.addEventListener('submit', function(event) {
-	event.preventDefault()
-	removeValidation()
-})
-*/
-
-
 //sendRequest
-
-function loginUser(email, password, name) {
-	this.name = name;
+function loginUser(email, password) {
 	this.email = email;
 	this.password = password;
 }
 
 function getUser() {
-	let name = form.name.value;
 	let email = form.email.value;
 	let password =form.password.value;
 	
-	let user = new CreateUser(name, email, password);
+	let user = new CreateUser(email, password);
 	return user;
 }
 
 function sendRequest() {
-	const urlRequest = 'http://localhost:3000/api/users';
+	const urlRequest = 'http://localhost:3000/api/users/login';
 	const headers = {
 		'Content-Type': 'application/json',
 	}
@@ -89,4 +66,20 @@ check.onclick = () => {
 		console.log(data);
 	})
 	.catch(err => console.log(err))
+}
+
+
+//open/close form
+btnLogin.onclick = function show() {
+	display = document.getElementById('window').style.display;
+	if (display == 'none') {
+		document.getElementById('window').style.display = 'block';
+	}
+}
+
+showNone.onclick = function hidden() {
+	display = document.getElementById('window').style.display;
+	if (display == 'block') {
+		document.getElementById('window').style.display = 'none';
+	}
 }

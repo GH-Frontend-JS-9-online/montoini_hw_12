@@ -60,13 +60,13 @@
 				<li><a class="main-acide__link-logo" href="#" target="_blank"><i class="fas fa-user-friends fa-lg"></i></a></li>
 			</ul>
 			<div class="main-acide__btn">
-				<button onclick="show('block')" class="main-acide__button">Log in</button>
+				<a href="#window"><button id="btnLogin" class="main-acide__button">Log in</button></a>
 			</div>
 		</div>
 	</acide>
-	<section id="window" class="wrapper">
+	<section id="window" class="wrapper" style="display: none;">
 		<div class="wrapper__main">
-			<div class="wrapper__close">
+			<div class="wrapper__close" id="showNone">
 				<i class="far fa-window-close fa-lg"></i>
 			</div>
 			<h1>Log in</h1>
