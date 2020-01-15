@@ -202,18 +202,21 @@ h1:hover {
 	}
 }
 
+#window {
+	margin-left: 37%;
+}
+
 .wrapper {
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	align-items: flex-end;
+	align-items: center;
 	justify-content: center;
 	text-align: center;
 	margin-top: -29%;
 	margin-bottom: 100px;
-	margin-left: 130px;
-	z-index: 800;
-	display: none;
+	margin-left: 2px;
+	z-index: 9999;
 
 	&__close {
 		display: flex;
@@ -327,12 +330,24 @@ h1:hover {
 	&__message {
 		position: relative;
 		color: #757da4;
+	}
+
+	&__btnsend {
+		width: 40px;
+		height: 40px;
+		border-radius: 20px;
+		border: 1px solid #757da4;
+		background-color: #757da4;
+		position: absolute;
+		top: 7px;
+		right: 20px;
+		cursor: pointer;
 
 		& i {
 			position: absolute;
-			top: 18px;
-			right: 30px;
-			transform: rotate(45deg);
+			top: 12px;
+			right: 13px;
+			color: #404359;
 		}
 	}
 
