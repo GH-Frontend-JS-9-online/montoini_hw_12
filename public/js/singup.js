@@ -1,9 +1,9 @@
-let form = document.getElementById('formWithValidator');
+let form = document.getElementById('myForm');
 let checkBtn = document.getElementById('check');
+let name = document.getElementById('userName');
 let email = document.getElementById('emailAddress');
 let pass1 = document.getElementById('password');
 let fields = document.querySelectorAll('.field');
-
 
 let generateError = function (text) {
 	let error = document.createElement('div')
@@ -30,47 +30,75 @@ let checkFields = function () {
 	}
 }
 
-//sendRequest
-function loginUser(email, password) {
+/*let chekPassword = function () {
+	if (pass1.value !== pass2.value) {
+		let error = generateError('Your password does not match')
+		pass2.parentElement.insertBefore(error, pass2.nextSibling)
+	}
+}*/
+
+
+//Sing up User
+function CreateUser(name, email, password) {
+	this.name = name;
 	this.email = email;
 	this.password = password;
 }
 
 function getUser() {
+	let name =form.name.value;
 	let email = form.email.value;
 	let password =form.password.value;
-	
-	let user = new CreateUser(email, password);
-	return user;
+
+	return new CreateUser(name, email, password);
 }
 
-function sendRequest() {
-	const urlRequest = 'http://localhost:3000/api/users/login';
+function singupUser() {
+	const urlSingup = 'https://geekhub-frontend-js-9.herokuapp.com/api/users/';
 	const headers = {
 		'Content-Type': 'application/json',
 	}
 
 	let user = getUser(); 
 
-	return fetch(urlRequest, {
+	return fetch(urlSingup, {
 		method: 'POST',
 		body: JSON.stringify(user),
-		headers: headers
+		headers: headers,
 	}).then(response => {
-		return response.json();
-	});
+ 		if(response.ok) return response.json();
+ 		return response.json().then(error => {
+ 			let e = new Error('Something went wrong');
+ 			e.data = error;
+ 			throw e;
+ 		})
+ 	})
 }
 
-check.onclick = () => {
-	sendRequest().then(data => {
+btnSingup.onclick = (event) => {
+	event.preventDefault()
+	removeValidation()
+	checkFields()
+	singupUser().then(data => {
 		console.log(data);
+		alert(`You have registered a new user:
+			id: ${data._id}
+			name: ${data.name}
+			Email: ${data.email} 
+			`);
+		document.myForm.reset();
+		setTimeout(() => {
+ 			document.location.href = 'chat.html';
+ 		}, 1000);
 	})
-	.catch(err => console.log(err))
+	.catch(err => {
+ 		console.log(err);
+ 	})
 }
 
 
 //open/close form
-btnLogin.onclick = function show() {
+showBlock.onclick = function show() {
 	display = document.getElementById('window').style.display;
 	if (display == 'none') {
 		document.getElementById('window').style.display = 'block';
