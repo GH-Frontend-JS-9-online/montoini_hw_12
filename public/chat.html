@@ -29,6 +29,23 @@
         	</div>
         </div>
     </header>
+    <section>
+    	<div class="showupMenu">
+			<div class="showupMenu__users">
+				<div class="showupMenu__btn" id="closeMenu"></div>
+				<h2>Users</h2>
+				<table class="showupMenu__table" id="tableUsers">
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+					</tr>
+				</table>
+				<div class="showupMenu__inner">
+					<button id="createNewChat">Creat chat with</button> <span class="recipient"></span>
+				</div>
+			</div>
+		</div>
+	</section>
     <section id="window" class="wrapper" style="display: block;">
 		<div class="wrapper__main">
 			<div class="wrapper__close" id="showNone">
@@ -69,13 +86,41 @@
     		</div>
     	</div>
     	<div class="message">
-			<div class="messages">		
-				<ul class="addNewUsers" id="buttons">
+			<div class="messenger__contacts">
 
+				<ul class="aside" id="buttons">
 
-				</ul>
-				<div class="message__block">
-					<button id="coversation" class="message__btn"><i class="fas fa-plus"></i>New coversation</button>
+				</ul>				
+				<div class="messenger__coversation">
+					<a class="btn__coversation"><span>+</span>New coversation</a>
+				</div>
+			</div>
+			<div class="messenger__chat">
+
+				<div class="messenger__inner">
+					<div class="messenger__send">
+						<div class="messenger__send_mess">
+							<div class="messenger__send_text">
+								Lorem ipsum.
+							</div>
+						</div>
+						<div class="messenger__send_date">
+							4 April 2016, 5:32 PM
+						</div>
+					</div>
+					<div class="messenger__recipient">
+						<div class="messenger__recipient_mess">
+							<div class="messenger__recipient_text">
+								Lorem ipsum dolor.  Lorem ipsum dolor sit amet.
+							</div>
+						</div>
+						<div class="messenger__recipient_date">
+							4 April 2016, 5:32 PM
+						</div>
+					</div> 
+				</div>
+				<div class="messenger__write_message">
+					<div class="messenger__textarea" contenteditable="true" placeholder="Write a message"></div>
 				</div>
 			</div>
 			<div class="messenger">
@@ -92,21 +137,27 @@
 				<div class="messenger__adress"><span>Adress</span>65 Lorem St. Warsaw. PL</div>
 				<div class="messenger__organization"><span>Organization</span>Symu.co</div>
 			</div>
-			<div class="message-main">
-				<button id="sendMessage" class="message__btnsend"><i class="fas fa-paper-plane fa-lg"></i>	</button>
-				<div id="blockMessages" class="message__send-message" contenteditable="true">Write a message</div>
-			</div>
 		</div>
     </section>
     <section class="main-acide">
 		<div class="main-acide__nav">
-			<ul class="main-acide__list">
-				<li><a class="main-acide__link-logo" href="#" target="_blank"><i class="fa fa-home fa-lg"></i></a></li>
-				<li><a class="main-acide__link-logo" href="#" target="_blank"><i class="fa fa-bars fa-lg"></i></a></li>
-				<li><a class="main-acide__link-logo" href="#" target="_blank"><i class="fas fa-chart-line fa-lg"></i></a></li>
-				<li><a class="main-acide__link-logo" href="#" target="_blank"><i class="fa fa-envelope fa-lg"></i></a></li>
-				<li><a class="main-acide__link-logo" href="#" target="_blank"><i class="fas fa-user-friends fa-lg"></i></a></li>
-			</ul>
+			<div class="main-acide__list">
+				<div>
+					<button class="main-acide__link-logo"><i class="fa fa-home fa-lg"></i></button>
+				</div>	
+				<div>
+					<button class="main-acide__link-logo" ><i class="fa fa-bars fa-lg"></i></button>
+				</div>	
+				<div>
+					<button class="main-acide__link-logo"><i class="fas fa-chart-line fa-lg"></i></button>
+				</div>	
+				<div>
+					<button id="sendLetter" class="main-acide__link-logo"><i class="fa fa-envelope fa-lg"></i></button>
+				</div>	
+				<div>
+					<button class="main-acide__link-logo"><i class="fas fa-user-friends fa-lg"></i></button>
+				</div>
+			</div>
 			<div class="main-acide__btn">
 				<button id="showBlock" class="main-acide__button" style="display: block;">Log in</button>
 			</div>

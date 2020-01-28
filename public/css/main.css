@@ -164,6 +164,105 @@ h1:hover {
 	padding-left: 35px;
 }
 
+.showupMenu {
+	position: absolute;
+	background: #0000009e;
+	height: 100%;
+	top: 0;
+	left:0;
+	right: 0;
+	bottom: 0;
+	z-index: 999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	display: none;
+}
+
+.showupMenu__users {
+	border-radius: 10px;
+	width: 400px;
+	padding:20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	font-weight: 600;
+	font-family: 'Montserrat', sans-serif;
+	background-color: #404359;
+}
+
+.showupMenu__users > h2 {
+	color: #fff;
+	text-align: center;
+}
+
+.showupMenu__users button {
+	padding: 10px;
+	background: #2196f3;
+	color: #fff;
+	border-radius: 10px;
+	border: 1px solid #2196f3;
+	outline: none;
+	cursor: pointer;
+}
+
+.showupMenu__users button:hover {
+	background: #fff;
+	border: 1px solid #fff;
+	color: #2196f3;
+}
+
+.showupMenu__table {
+	margin: 20px auto;
+}
+
+.showupMenu__table tr th {
+	color: #fff;
+	padding: 0 15px 0 15px;
+}
+
+.showupMenu__btn {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	width: 23px;
+	height: 23px;
+	cursor: pointer;
+}
+
+.showupMenu__btn:before {
+	content: '';
+	background: #2196f3;
+	position: absolute;
+	height: 2px;
+	width: 27px;
+	top: 11px;
+	left: -4px;
+	transform: rotate(-45deg);
+}
+
+.showupMenu__btn:after {
+	content: '';
+	background: #2196f3;
+	position: absolute;
+	height: 2px;
+	width: 27px;
+	top: 11px;
+	left: -4px;
+	transform: rotate(45deg);
+}
+
+.showupMenu__inner {
+	display: flex;
+	align-items: center;
+}
+
+.showupMenu__inner > span {
+	color: #fff;
+	margin-left: 10px;
+}
+
 .wrapper {
 	position: absolute;
 	display: flex;
@@ -173,7 +272,7 @@ h1:hover {
 	text-align: center;
 	margin-top: 150px;
 	margin-left: 37%;
-	z-index: 9999;
+	z-index: 980;
 }
 
 .wrapper__close {
@@ -272,12 +371,12 @@ h1:hover {
 .message__block {
 	margin-left: -500px;
 	margin-right: 100px;
-	z-index: 999;
+	z-index: 997;
 }
 
 .messages {
 	width: 539px;
-	height: 927px;
+	height: 974px;
 	box-shadow: 0 3px 80px rgba(23, 24, 32, 0.3);
 	background-color: #2b2d3c;
 	margin-left: -30px;
@@ -286,7 +385,7 @@ h1:hover {
 
 .message__btn {
 	position: absolute;
-	bottom: 130px;
+	bottom: 170px;
 	left: 0;
 	width: 450px;
 	height: 50px;
@@ -303,19 +402,67 @@ h1:hover {
 	padding-right: 15px; 
 }
 
+.messenger__contacts {
+	min-width: 530px;
+	max-width: 536px;
+	box-shadow: 0 3px 80px rgba(23, 24, 32, 0.3);
+	background-color: #2b2d3c;
+	position: relative;
+	padding-bottom: 115px;
+	height: 974px;
+	margin-top: -550px;
+	margin-left: -30px;
+}
+
+.messenger__coversation {
+	position: absolute;
+	bottom: 0;
+	height: 115px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+.btn__coversation {
+	width: 449px;
+	height: 51px;
+	border-radius: 5px;
+	background-color: #2196f3;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #ffffff;
+	font-size: 18px;
+	letter-spacing: 0.24px;
+	cursor: pointer;
+	transition: all .2s;
+	margin-top: -295px;
+}
+
+.btn__coversation:hover {
+	background-color: #fff;
+	color: #2196f3;
+}
+
+.btn__coversation > span {
+	font-weight: 600;
+	font-size: 28px;
+	margin-right: 14px;
+}
+
 .messenger {
 	min-width: 317px;
 	max-width: 318px;
-	height: 927px;
+	height: 974px;
 	box-shadow: 0 3px 80px rgba(23, 24, 32, 0.3);
 	background-color: #2b2d3c;
 	text-align: center;
 	padding: 55px 20px 10px;
 	position: absolute;
-	right: -334px;
+	right: -333px;
 	top: -550px;
-	z-index: 999;
-
+	z-index: 990;
 }
 
 .messenger span {
@@ -380,7 +527,7 @@ h1:hover {
 	border: 1px solid #757da4;
 	background-color: #757da4;
 	position: absolute;
-	top: 203px;
+	top: 208px;
 	right: 20px;
 	cursor: pointer;
 }
@@ -404,38 +551,137 @@ h1:hover {
 	padding-left: 30px;
 	padding-top: 10px;
 	margin-left: 40px;
-	margin-top: 70px;	
+	margin-top: 32px;	
+}
+
+.messenger__chat {
+	height: 853px;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
+	padding: 28px 25px;
+	overflow: auto;
+	margin-top: 20px;
+	color: #2f3242;
+	margin-top: -730px;
+}
+
+.messenger__write_message {
+	margin-top: 40px;
+	width: 890px;
+}
+
+.messenger__textarea {
+	border-radius: 10px;
+	border: 1px solid rgba(156, 161, 178, 0.3);
+	background-color: #404359;
+	color: #9ca1b2;
+	font-size: 16px;
+	letter-spacing: 0.32px;
+	outline: none;
+	padding: 16px 24px;
+}
+
+.messenger__send {
+	padding: 5px 0;
+}
+
+ .messenger__send_mess {
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+} 
+
+.messenger__send_text {
+	padding: 20px;
+	color: #ffffff;
+	font-size: 16px;
+	letter-spacing: 0.32px;
+	box-shadow: 0 3px 80px rgba(158, 163, 180, 0.3);
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	background-color: #2196f3;
+}
+
+.messenger__send_date {
+	text-align: right;
+	padding-right: 77px;
+	padding-top: 10px;
+	color: #9ca1b2;
+	font-size: 14px;
+	letter-spacing: 0.42px;
+}
+
+.messenger__recipient {
+	padding: 5px 0;
+}
+
+.messenger__recipient_mess {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-end;
+}
+
+.messenger__recipient_text {
+	padding: 20px;
+	color: #ffffff;
+	font-size: 16px;
+	letter-spacing: 0.32px;
+	box-shadow: 0 3px 80px rgba(158, 163, 180, 0.3);
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	background-color: #404359;
+}
+
+.messenger__recipient_date {
+	padding-left: 77px;
+	padding-top: 10px;
+	color: #9ca1b2;
+	font-size: 14px;
+	letter-spacing: 0.42px;
 }
 
 .main-acide__nav {
 	width: 100px;
-	min-height: 927px;
+	min-height: 974px;
 	box-shadow: 0 3px 80px rgba(23, 24, 32, 0.2);
 	background-color: #2b2d3c;	
 }
 
-.main-acide__list {
-	list-style: none;
-	padding-top: 45px;
+.main-acide__link-logo {
+	color: #757da4;
+	background-color: #2b2d3c;
+	border: 1px solid #2b2d3c;
+	display: flex;
+	flex-direction: column;
+	padding-top: 50px;
 	padding-left: 35px;
 }
 
-.main-acide__list li {
-	padding-bottom: 60px;
-} 
-
-.main-acide__link-logo {
-	color: #757da4;
+.main-acide__link-logo:hover {
+	color: #fff;
 }
 
-.main-acide__link-logo:hover{
+.main-acide__link-logo:last-child {
+	margin-bottom: 28px;
+}
+
+#sendLetter {
 	color: #fff;
+}
+
+#sendLetter:hover {
+	color: #757da4;
 }
 
 .main-acide__btn {
 	display: flex;
 	justify-content: center;
 	margin-top: 320px;
+	padding-bottom: 85px;
 }
 
 .main-acide__button {
@@ -455,3 +701,4 @@ h1:hover {
 	color: #2196f3;
 	border: 1px solid #fff;
 }
+
