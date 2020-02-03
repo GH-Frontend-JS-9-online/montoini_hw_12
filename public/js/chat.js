@@ -3,11 +3,11 @@ let checkBtn = document.getElementById('check');
 let email = document.getElementById('emailAddress');
 let pass1 = document.getElementById('password');
 let fields = document.querySelectorAll('.field');
-let getToken;
 let getIdUser;
-let recipientIdUser;
+let getToken;
 let idNewThread;
 let arrayUsersGlobal;
+let recipientIdUser;
 
 let generateError = function (text) {
 	let error = document.createElement('div')
@@ -92,7 +92,7 @@ function loginUser() {
 
 
 btnLogin.onclick = async (event) => {
-	event.preventDefault()
+	event.preventDefault();
 	//Get token
 	getToken = await loginUser().then(data => {
 		let wrapper = document.querySelector('.wrapper');
@@ -119,7 +119,7 @@ btnLogin.onclick = async (event) => {
 
 	arrayUsers.forEach((item) => {
 		if (getIdUser == item._id) {
-		  	let blockMessenger = document.querySelector('.messenger');
+		  	let blockMessenger = document.querySelector('.messenger__block');
 		  	blockMessenger.innerHTML = `<div class="messenger__photo">
 								<img src="img/avatar-1.png" alt="">
 							</div>
@@ -147,10 +147,9 @@ btnLogin.onclick = async (event) => {
 							</div>`;	
 			getAllUsers().then(data => {
 			let table = document.querySelector('.showupMenu__table');
-			arrayUsersGlobal = data;
 			console.log(`Users array created`);
 			console.log(data);
-
+			arrayUsersGlobal = data;
 				for(let item of data) {
 					let tr = document.createElement('tr');
 					tr.dataset.id = item._id;
@@ -163,14 +162,15 @@ btnLogin.onclick = async (event) => {
 	await refreshAside();	
 }
 
+
 async function refreshAside() {
-	let ul = document.querySelector('.messenger__contacts > ul');
+	let ul = document.querySelector('.messenger__contacts-block > ul');
 	let arrayAllThreads = await retrieveAllThreads();
 	console.log('Get an array of cabinet');
-	console.log(arrayAllThreads);
 	let ulAside = document.querySelector('.aside');
 
 	if(ulAside.children.length == 0) {
+
 		arrayAllThreads.forEach((item) => {
 			let name;
 			item.users.forEach(item => {
@@ -186,7 +186,7 @@ async function refreshAside() {
 					li.insertAdjacentHTML('beforeend', `<div class="messenger__contacts_item_user">
 															<div class="messenger__contacts_item_inner">
 																<div class="messenger__contacts_item_photo">
-																	<img src="img/avatar.png" alt="">
+																	<img src="img/avatar-1.png" alt="">
 																</div>
 																<div class="messenger__contacts_item_name">
 																	${name}
@@ -209,7 +209,7 @@ async function refreshAside() {
 					li.insertAdjacentHTML('beforeend', `<div class="messenger__contacts_item_user">
 															<div class="messenger__contacts_item_inner">
 																<div class="messenger__contacts_item_photo">
-																	<img src="img/avatar.png" alt="">
+																	<img src="img/avatar-1.png" alt="">
 																</div>
 																<div class="messenger__contacts_item_name">
 																	${name}
@@ -220,7 +220,7 @@ async function refreshAside() {
 															</div>
 														</div>
 														<div class="messenger__contacts_item_last-letter">
-															${item.last_message.body}
+															
 														</div>`);
 					console.dir(li);
 					ulAside.append(li);
@@ -249,7 +249,7 @@ async function refreshAside() {
 					li.insertAdjacentHTML('beforeend', `<div class="messenger__contacts_item_user">
 															<div class="messenger__contacts_item_inner">
 																<div class="messenger__contacts_item_photo">
-																	<img src="img/avatar.png" alt="">
+																	<img src="img/avatar-1.png" alt="">
 																</div>
 																<div class="messenger__ontacts_item_name">
 																	${name}
@@ -272,7 +272,7 @@ async function refreshAside() {
 					li.insertAdjacentHTML('beforeend', `<div class="messenger__contacts_item_user">
 															<div class="messenger__contacts_item_inner">
 																<div class="messenger__contacts_item_photo">
-																	<img src="img/avatar.png" alt="">
+																	<img src="img/avatar-1.png" alt="">
 																</div>
 																<div class="messenger__contacts_item_name">
 																	${name}
@@ -283,7 +283,7 @@ async function refreshAside() {
 															</div>
 														</div>
 														<div class="messenger__contacts_item_last-letter">
-															${item.last_message.body}
+															
 														</div>`);
 					console.dir(li);
 					ulAside.append(li);
@@ -292,7 +292,6 @@ async function refreshAside() {
 		});
 	}
 }
-
 
 function getAllUsers() {
 	const urlAllUsers = 'https://geekhub-frontend-js-9.herokuapp.com/api/users/all';
@@ -307,26 +306,39 @@ function getAllUsers() {
 }
 
 
+function retrieveAllThreads() {
+	const urlAllThreads = 'https://geekhub-frontend-js-9.herokuapp.com/api/threads?sort=desc';
+	const headers = {
+		Authorization: getToken,
+	}
+
+	return fetch(urlAllThreads, {
+		method: 'GET',
+		headers: headers,
+	}).then(response => response.json());
+}
+
+
 function sendMessage(idThread, message) {
 	const urlSendMessage = 'https://geekhub-frontend-js-9.herokuapp.com/api/threads/messages';
 
 	const headers = {
 		Authorization: getToken,
-		'Content-Type': 'application/json',
+		"Content-Type": "application/json",
 	}
 
-	let user = {
-		'thread': {
-			'_id': idThread, // id from threads
+	let data = {
+		"thread": {
+			"_id": idThread, // id from threads
 		},
-		'message': {
-			'body': message,
+		"message": {
+			"body": message,
 		}
 	}
 
 	return fetch(urlSendMessage, {
 		method: 'POST',
-		body: JSON.stringify(user),
+		body: JSON.stringify(data),
 		headers: headers,
 	}).then(response => response.json());
 }
@@ -346,20 +358,22 @@ async function getMessage(event) {
 		} else {
 			await sendMessage(idNewThread, textArea.innerText);
 			let arrAllThreads = await retrieveAllThreads().then(data => data);
+			
 			arrAllThreads.forEach((item) => {
-  					
   				if(item._id == idNewThread) {
-  						
-  					if(item.last_message.user == getIdUser) {
+  					if(item.last_message == getIdUser) {
   						let sendBlock = document.createElement('div');
   						sendBlock.className = 'messenger__send';
   						sendBlock.innerHTML = `<div class="messenger__send_mess">
   													<div class="messenger__send_text">
-  														${item.last_message.body}
+  														${item.last_message}
   													</div>
+  													<div class="messenger__send_avatar">
+														<img src="img/avatar-1.png" alt="">
+													</div>
   												</div>
   												<div class="messenger__send_date">
-  													${item.last_message.created_at}
+  													${item.last_message}
   												</div>`;
   						messageChat.append(sendBlock);
   					} else {
@@ -367,11 +381,14 @@ async function getMessage(event) {
   						recipientBlock.className = 'messenger__recipient';
   						recipientBlock.innerHTML = `<div class="messenger__recipient_mess">
   														<div class="messenger__recipient_text">
-  															${item.last_message.body}
+  															${item.last_message}
   														</div>
+  														<div class="messenger__recipient_avatar">
+															<img src="img/avatar-1.png" alt="">
+														</div>
   													</div>
   													<div class="messenger__recipient_date">
-  														${item.last_message.created_at}
+  														${item.last_message}
   													</div>`;
   						messageChat.append(recipientBlock);
   					}
@@ -383,32 +400,9 @@ async function getMessage(event) {
 }
 document.addEventListener('keydown', getMessage);
 
-function retrieveAllThreads() {
-	const urlAllThreads = 'https://geekhub-frontend-js-9.herokuapp.com/api/threads?sort=desc';
-	const headers = {
-		Authorization: getToken,
-	}
-
-	return fetch(urlAllThreads, {
-		method: 'GET',
-		headers: headers,
-	}).then(response => response.json())
-}
-
-function retrieveAllThreadMessage() {
-	const url = `https://geekhub-frontend-js-9.herokuapp.com/api/threads/messages/${id}?sort=desc`;
-	const headers = {
-		Authorization: getToken,
-	}
-
-	return fetch(url, {
-		method: 'GET',
-		headers: headers,
-	}).then(response => response.json())
-}
 
 function createThread(userId) {
-	const urlThread = 'https://geekhub-frontend-js-9.herokuapp.com/api/threads';
+	const getThread = 'https://geekhub-frontend-js-9.herokuapp.com/api/threads';
 	const headers = {
 		Authorization: getToken,
 		'Content-Type': 'application/json',
@@ -418,18 +412,17 @@ function createThread(userId) {
 			'_id': userId,
 		}
 	}
-	return fetch(urlThread, {
+	return fetch(getThread, {
 		method: 'POST',
 		body: JSON.stringify(user),
 		headers: headers,
 	}).then(response => response.json())
 }
-
 sendLetter.onclick = () => {
 	createThread().then(data => console.log(data));
 }
 
-
+// is functioning
 function getIdForCabinet(event) {
 	let nameUser = document.querySelector('.recipient');
 	nameUser.innerHTML = event.path[1].children[0].innerText;
@@ -438,7 +431,7 @@ function getIdForCabinet(event) {
 }
 tableUsers.addEventListener('click', getIdForCabinet);
 
-
+// is functioning
 async function createChat() {
 	idNewThread = await createThread(recipientIdUser)
 	.then(data => data._id);
@@ -446,7 +439,7 @@ async function createChat() {
 	let chooseUser = document.querySelector('.showupMenu');
 	chooseUser.style.display = 'none';
 
-	let arrMessages = await retrieveAllThreadMessage(idNewThread).then(data => data.messages);
+	let arrMessages = await retrieveAllThreadMessage(idNewThread).then(data => data);
 	console.log(arrMessages);
 
 	let messageChat = document.querySelector('.messenger__inner');
@@ -455,6 +448,65 @@ async function createChat() {
 	}
 }
 createNewChat.addEventListener('click', createChat);
+
+
+function retrieveAllThreadMessage(id) {
+	const url = `https://geekhub-frontend-js-9.herokuapp.com/api/threads/messages/${id}?sort=desc`;
+	const headers = {
+		Authorization: getToken,
+	}
+
+	return fetch(url, {
+		method: 'GET',
+		headers: headers,
+	}).then(response => response.json());
+}
+
+
+async function getIdThread(event) {
+	if(event.target.dataset.idThread) {
+		let messageChat = document.querySelector('.messenger__inner');
+		messageChat.innerHTML = "";
+		console.log('klick');
+		let arrMessages = await retrieveAllThreadMessage(event.target.dataset.idThread).then(data => data);
+		console.log(arrMessages);
+		idNewThread = event.target.dataset.idThread;
+		console.log(idNewThread);
+		if(arrMessages.length == 0) {
+			alert('is ampty');
+			messageChat.innerHTML = '<div class="textInfo">Write anything!</div>';
+		}
+
+		arrMessages.forEach((item) => {
+			if(item.user == getIdUser) {
+				let sendBlock = document.createElement('div');
+  					sendBlock.className = 'messenger__send';
+  					sendBlock.innerHTML = `<div class="messenger__send_mess">
+												<div class="messenger__send_text">
+													${item.body}
+												</div>
+											</div>
+											<div class="messenger__send_date">
+												${item.created_at}
+											/div>`;
+				messageChat.prepend(sendBlock);
+			} else {
+				let recipientBlock = document.createElement('div');
+  					recipientBlock.className = 'messenger__recipient';
+  					recipientBlock.innerHTML = `<div class="messenger__recipient_mess">
+													<div class="messenger__recipient_text">
+														${item.body}
+													</div>
+												</div>
+												<div class="messenger__recipient_date">
+													${item.created_at}
+												</div>`;
+				messageChat.prepend(recipientBlock);
+			}
+		});		
+	}
+}
+arrayAside.addEventListener('click', getIdThread);
 
 
 let btnGetUsers = document.querySelector('.btn__coversation');

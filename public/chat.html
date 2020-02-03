@@ -29,12 +29,13 @@
         	</div>
         </div>
     </header>
-    <section>
+    <div class="body">
+    	
     	<div class="showupMenu">
-			<div class="showupMenu__users">
+			<div class="users" id="tableUsers">
 				<div class="showupMenu__btn" id="closeMenu"></div>
 				<h2>Users</h2>
-				<table class="showupMenu__table" id="tableUsers">
+				<table class="showupMenu__table">
 					<tr>
 						<th>Name</th>
 						<th>Email</th>
@@ -45,125 +46,134 @@
 				</div>
 			</div>
 		</div>
-	</section>
-    <section id="window" class="wrapper" style="display: block;">
-		<div class="wrapper__main">
-			<div class="wrapper__close" id="showNone">
-				<i class="far fa-window-close fa-lg"></i>
-			</div>
-			<h1>Log in</h1>
-			<a href="singup.html" class="wrapper__href">Not a member?</a>
-			<form class="wrapper__form" id="myForm" name="myForm">
-				<div class="wrapper__input">
-		  			<input id="emailAddress" class="field" name="email" type="email" placeholder="Email...">
-		  		</div>
-		  		<div class="wrapper__input">
-		  			<input id="loginPass"  class="field" name="password" type="password" placeholder="Password..." pattern="[a-zA-Zа-яА-ЯёЁ0-9]{6,90}" title="Password must be at least 6 characters">
-		  		</div>
-		  		<p class="formError" id="formError"></p>
-		  		<input id="btnLogin" class="wrapper__button" type="submit" value="Log in">
-			</form>
-		</div>
-	</section>
-    <section class="sectionHeader">
-    	<div class="sectionHeader__block">
-    		<div class="sectionHeader__actions">
-    			<div class="sectionHeader__btn">
-    				<button id="btnInbox" class="sectionHeader__btn-inbox"><i class="far fa-user-circle fa-lg"></i> Inbox</button>
-    			</div>
-    			<div class="sectionHeader__btn">
-    				<button id="btnSent" class="sectionHeader__btn-sent"><i class="fas fa-paper-plane fa-lg"></i> Send</button>
-    			</div>
-    			<div class="sectionHeader__btn">
-    				<button id="btnTrash" class="sectionHeader__btn-trash"><i class="fas fa-trash fa-lg"></i> Trash</button>
-    			</div>
-    		</div>
-    		<div class="sectionHeader__messages">
-    			<div class="sectionHeader__btnfilter">
-    				<p>Filter messages:</p>
-    				<button id="btnFilter" class="sectionHeader__btn-filter">Date <i class="fas fa-angle-down fa-lg"></i></button>
-    			</div>  
-    		</div>
-    	</div>
-    	<div class="message">
-			<div class="messenger__contacts">
-
-				<ul class="aside" id="buttons">
-
-				</ul>				
-				<div class="messenger__coversation">
-					<a class="btn__coversation"><span>+</span>New coversation</a>
+    	<div id="window" class="wrapper" style="display: block;">
+			<div class="wrapper__main">
+				<div class="wrapper__close" id="showNone">
+					<i class="far fa-window-close fa-lg"></i>
 				</div>
+				<h1>Log in</h1>
+				<a href="singUp.html" class="wrapper__href">Not a member?</a>
+				<form class="wrapper__form" id="myForm" name="myForm">
+					<div class="wrapper__input">
+		  				<input id="emailAddress" class="field" name="email" type="email" placeholder="Email...">
+		  			</div>
+		  			<div class="wrapper__input">
+		  				<input id="loginPass"  class="field" name="password" type="password" placeholder="Password..." pattern="[a-zA-Zа-яА-ЯёЁ0-9]{6,90}" title="Password must be at least 6 characters">
+		  			</div>
+		  			<p class="formError" id="formError"></p>
+		  			<input id="btnLogin" class="wrapper__button" type="submit" value="Log in">
+				</form>
 			</div>
-			<div class="messenger__chat">
+		</div>
+    	<div class="sectionHeader">
+    		<div class="sectionHeader__block">
+    			<div class="sectionHeader__actions">
+    				<div class="sectionHeader__btn">
+    					<button id="btnInbox" class="sectionHeader__btn-inbox"><i class="far fa-user-circle fa-lg"></i> Inbox</button>
+    				</div>
+    				<div class="sectionHeader__btn">
+    					<button id="btnSent" class="sectionHeader__btn-sent"><i class="fas fa-paper-plane fa-lg"></i> Send</button>
+    				</div>
+    				<div class="sectionHeader__btn">
+    					<button id="btnTrash" class="sectionHeader__btn-trash"><i class="fas fa-trash fa-lg"></i> Trash</button>
+    				</div>
+    			</div>
+    			<div class="sectionHeader__messages">
+    				<div class="sectionHeader__btnfilter">
+    					<p>Filter messages:</p>
+    					<button id="btnFilter" class="sectionHeader__btn-filter">Date <i class="fas fa-angle-down fa-lg"></i></button>
+    				</div>  
+    			</div>
+    		</div>
+    		<div class="messenger">
+				<div class="messenger__contacts">
+					<div class="messenger__contacts-block">
 
-				<div class="messenger__inner">
-					<div class="messenger__send">
-						<div class="messenger__send_mess">
-							<div class="messenger__send_text">
-								Lorem ipsum.
-							</div>
-						</div>
-						<div class="messenger__send_date">
-							4 April 2016, 5:32 PM
-						</div>
+						<ul class="aside" id="arrayAside">
+
+
+						</ul>
 					</div>
-					<div class="messenger__recipient">
-						<div class="messenger__recipient_mess">
-							<div class="messenger__recipient_text">
-								Lorem ipsum dolor.  Lorem ipsum dolor sit amet.
+					<div class="messenger__coversation">
+						<a class="btn__coversation"><span>+</span>New coversation</a>
+					</div>
+				</div>
+				<div class="messenger__chat">
+
+					<div class="messenger__inner">
+						<div class="messenger__send">
+							<div class="messenger__send_mess">
+								<div class="messenger__send_text">
+									Lorem ipsum.
+								</div>
+								<div class="messenger__send_avatar">
+									<img src="img/avatar-1.png" alt="">
+								</div>
+							</div>
+							<div class="messenger__send_date">
+								4 April 2016, 5:32 PM
 							</div>
 						</div>
-						<div class="messenger__recipient_date">
-							4 April 2016, 5:32 PM
-						</div>
-					</div> 
+						<div class="messenger__recipient">
+							<div class="messenger__recipient_mess">
+								<div class="messenger__recipient_avatar">
+									<img src="img/avatar-1.png" alt="">
+								</div>
+								<div class="messenger__recipient_text">
+									Lorem ipsum dolor.  Lorem ipsum dolor sit amet.
+								</div>
+							</div>
+							<div class="messenger__recipient_date">
+								4 April 2016, 5:32 PM
+							</div>
+						</div> 
+					</div>-->
+					<div class="messenger__write_message">
+						<div class="messenger__textarea" contenteditable="true" placeholder="Write a message"></div>
+					</div>
 				</div>
-				<div class="messenger__write_message">
-					<div class="messenger__textarea" contenteditable="true" placeholder="Write a message"></div>
+				<div class="messenger__block">
+					<div class="messenger__photo">
+						<img src="img/avatar.png" alt="avatar">
+					</div>
+					<div class="messenger__name">Lyall Roach</div>
+					<div class="messenger__position">UX/US Designer</div>
+					<div class="messenger__info">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad 
+					</div>
+					<div class="messenger__email"><span>Email</span>Lyallroach@gmail.com</div>
+					<div class="messenger__phone"><span>Phone</span>+48 500 400 300</div>
+					<div class="messenger__adress"><span>Adress</span>65 Lorem St. Warsaw. PL</div>
+					<div class="messenger__organization"><span>Organization</span>Symu.co</div>
 				</div>
 			</div>
-			<div class="messenger">
-				<div class="messenger__photo">
-					<img src="img/avatar.png" alt="avatar">
+    	</div>
+    	<div class="main-acide">
+			<div class="main-acide__nav">
+				<div class="main-acide__list">
+					<div>
+						<button class="main-acide__link-logo"><i class="fa fa-home fa-lg"></i></button>
+					</div>	
+					<div>
+						<button class="main-acide__link-logo" ><i class="fa fa-bars fa-lg"></i></button>
+					</div>	
+					<div>
+						<button class="main-acide__link-logo"><i class="fas fa-chart-line fa-lg"></i></button>
+					</div>	
+					<div>
+						<button id="sendLetter" class="main-acide__link-logo"><i class="fa fa-envelope fa-lg"></i></button>
+					</div>	
+					<div>
+						<button class="main-acide__link-logo"><i class="fas fa-user-friends fa-lg"></i></button>
+					</div>
 				</div>
-				<div class="messenger__name">Lyall Roach</div>
-				<div class="messenger__position">UX/US Designer</div>
-				<div class="messenger__info">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad 
+				<div class="main-acide__btn">
+					<button id="showBlock" class="main-acide__button" style="display: block;">Log in</button>
 				</div>
-				<div class="messenger__email"><span>Email</span>Lyallroach@gmail.com</div>
-				<div class="messenger__phone"><span>Phone</span>+48 500 400 300</div>
-				<div class="messenger__adress"><span>Adress</span>65 Lorem St. Warsaw. PL</div>
-				<div class="messenger__organization"><span>Organization</span>Symu.co</div>
 			</div>
 		</div>
-    </section>
-    <section class="main-acide">
-		<div class="main-acide__nav">
-			<div class="main-acide__list">
-				<div>
-					<button class="main-acide__link-logo"><i class="fa fa-home fa-lg"></i></button>
-				</div>	
-				<div>
-					<button class="main-acide__link-logo" ><i class="fa fa-bars fa-lg"></i></button>
-				</div>	
-				<div>
-					<button class="main-acide__link-logo"><i class="fas fa-chart-line fa-lg"></i></button>
-				</div>	
-				<div>
-					<button id="sendLetter" class="main-acide__link-logo"><i class="fa fa-envelope fa-lg"></i></button>
-				</div>	
-				<div>
-					<button class="main-acide__link-logo"><i class="fas fa-user-friends fa-lg"></i></button>
-				</div>
-			</div>
-			<div class="main-acide__btn">
-				<button id="showBlock" class="main-acide__button" style="display: block;">Log in</button>
-			</div>
-		</div>
-	</section>
-		
+	</div>	
+
 	<script src="js/chat.js"></script>
 </body>
 </html>

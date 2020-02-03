@@ -29,53 +29,56 @@
         	</div>
         </div>
     </header>
-    <section id="window" class="wrapper" style="display: block;">
-		<div class="wrapper__main">
-			<div class="wrapper__close" id="showNone">
-				<i class="far fa-window-close fa-lg"></i>
-			</div>
-			<h1>Sign up</h1>
-			<a href="chat.html" class="wrapper__href">Existing member?</a>
+    <div class = "body">
+    	<div id="window" class="wrapper" style="display: block;">
+			<div class="wrapper__main">
+				<div class="wrapper__close" id="showNone">
+					<i class="far fa-window-close fa-lg"></i>
+				</div>
+				<h1>Sign up</h1>
+				<a href="chat.html" class="wrapper__href">Existing member?</a>
 
-			<form class="wrapper__form" id="myForm" name="myForm">
-				<div class="wrapper__input">
-		  			<input id="userName" class="field" name="name" type="name" placeholder="Name...">
-		  		</div>
-				<div class="wrapper__input">
-		  			<input id="emailAddress" class="field" name="email" type="email" placeholder="Email...">
-		  		</div>
-		  		<div class="wrapper__input">
-		  			<input id="password"  class="field" name="password" type="password" placeholder="Password..." pattern="[a-zA-Zа-яА-ЯёЁ0-9]{6,90}" title="Password must be at least 6 characters">
-		  		</div>
-		  		<p class="formError" id="formError"></p>
-		  		<input id="btnSingup" class="wrapper__button" type="submit" value="Sing up">
-			</form>
+				<form class="wrapper__form" id="myForm" name="myForm">
+					<div class="wrapper__input">
+		  				<input id="userName" class="field" name="name" type="name" placeholder="Name...">
+		  			</div>
+					<div class="wrapper__input">
+		  				<input id="emailAddress" class="field" name="email" type="email" placeholder="Email...">
+		  			</div>
+		  			<div class="wrapper__input">
+		  				<input id="password"  class="field" name="password" type="password" placeholder="Password..." pattern="[a-zA-Zа-яА-ЯёЁ0-9]{6,90}" title="Password must be at least 6 characters">
+		  			</div>
+		  			<p class="formError" id="formError"></p>
+		  			<input id="btnSingup" class="wrapper__button" type="submit" value="Sing up">
+				</form>
+			</div>
 		</div>
-	</section>
-    <acide class="main-acide">
-		<div class="main-acide__nav">
-			<div class="main-acide__list">
-				<div>
-					<button class="main-acide__link-logo"><i class="fa fa-home fa-lg"></i></button>
-				</div>	
-				<div>
-					<button class="main-acide__link-logo" ><i class="fa fa-bars fa-lg"></i></button>
-				</div>	
-				<div>
-					<button class="main-acide__link-logo"><i class="fas fa-chart-line fa-lg"></i></button>
-				</div>	
-				<div>
-					<button id="sendLetter" class="main-acide__link-logo"><i class="fa fa-envelope fa-lg"></i></button>
-				</div>	
-				<div>
-					<button class="main-acide__link-logo"><i class="fas fa-user-friends fa-lg"></i></button>
+		<div class="main-acide">
+			<div class="main-acide__nav">
+				<div class="main-acide__list">
+					<div>
+						<button class="main-acide__link-logo"><i class="fa fa-home fa-lg"></i></button>
+					</div>	
+					<div>
+						<button class="main-acide__link-logo" ><i class="fa fa-bars fa-lg"></i></button>
+					</div>	
+					<div>
+						<button class="main-acide__link-logo"><i class="fas fa-chart-line fa-lg"></i></button>
+					</div>	
+					<div>
+						<button id="sendLetter" class="main-acide__link-logo"><i class="fa fa-envelope fa-lg"></i></button>
+					</div>	
+					<div>
+						<button class="main-acide__link-logo"><i class="fas fa-user-friends fa-lg"></i></button>
+					</div>
+				</div>
+				<div class="main-acide__btn">
+					<button id="showBlock" class="main-acide__button" style="display: block;">Log in</button>
 				</div>
 			</div>
-			<div class="main-acide__btn">
-				<button id="showBlock" class="main-acide__button" style="display: block;">Log in</button>
-			</div>
 		</div>
-	</acide>
+	</div>	
+  
 <script src="js/singup.js"></script></body>
 </body>
 </html>
