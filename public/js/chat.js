@@ -158,8 +158,7 @@ btnLogin.onclick = async (event) => {
 				}
 			})						
 		}
-	});
-	await refreshAside();	
+	});	
 }
 
 
@@ -170,125 +169,46 @@ async function refreshAside() {
 	let ulAside = document.querySelector('.aside');
 
 	if(ulAside.children.length == 0) {
-
 		arrayAllThreads.forEach((item) => {
-			let name;
-			item.users.forEach(item => {
-				if(item.me == false) name = item.name;
-			});
-
-			if(item.length != 0) {
-				if(item.last_message == "No messages yet") {
-					let li = document.createElement('li');
-					li.thread = item._id;
-					li.dataset.idThread = item._id;
-					li.className = "messenger__contacts_item";
-					li.insertAdjacentHTML('beforeend', `<div class="messenger__contacts_item_user">
-															<div class="messenger__contacts_item_inner">
-																<div class="messenger__contacts_item_photo">
-																	<img src="img/avatar-1.png" alt="">
-																</div>
-																<div class="messenger__contacts_item_name">
-																	${name}
-																</div>
-															</div>
-															<div class="messenger__contacts_item_date">
-																Today. 5:32 PM
-															</div>
+			let li = document.createElement('li');
+			li.dataset.idThread = item._id;
+			li.className = "messenger__contacts_item";
+			li.insertAdjacentHTML('beforeend', `<div class="messenger__contacts_item_user">
+													<div class="messenger__contacts_item_inner">
+														<div class="messenger__contacts_item_photo">
+															<img src="img/avatar-1.png" alt="">
 														</div>
-														<div class="messenger__contacts_item_last-letter">
-															No messages yet.
-														</div>`);
-					console.dir(li);
-					ulAside.append(li);
-				} else {
-					let li = document.createElement('li');
-					li.thread = item._id;
-					li.dataset.idThread = item._id;
-					li.className = "messenger__contacts_item";
-					li.insertAdjacentHTML('beforeend', `<div class="messenger__contacts_item_user">
-															<div class="messenger__contacts_item_inner">
-																<div class="messenger__contacts_item_photo">
-																	<img src="img/avatar-1.png" alt="">
-																</div>
-																<div class="messenger__contacts_item_name">
-																	${name}
-																</div>
-															</div>
-															<div class="messenger__contacts_item_date">
-																Today. 5:32 PM
-															</div>
+														<div class="messenger__contacts_item_name">
+															${item.users[1].name}
 														</div>
-														<div class="messenger__contacts_item_last-letter">
-															
-														</div>`);
-					console.dir(li);
-					ulAside.append(li);
-				}
-			}
+													</div>
+													<div class="messenger__contacts_item_date">
+														${item.created_at}
+													</div>
+												</div>`);
+			ulAside.append(li);
 		});
 	} else if (ulAside.children.length != 0) {
+		
 		arrayAllThreads.forEach((item) => {
-			let name;
-			item.users.forEach(item => {
-				if(item.me == false) name = item.name;
-			});
-			let result = true;
-				for(let i of ulAside.children) {
-					if (i.dataset.idThread == item._id) {
-						result = false;
-						break;
-					}
-				}
-			if (result) {
-				if (item.last_message == "No messages yet") {
-					let li = document.createElement('li');
-					li.thread = item._id;
-					li.dataset.idThread = item._id;
-					li.className = "messenger__contacts_item";
-					li.insertAdjacentHTML('beforeend', `<div class="messenger__contacts_item_user">
-															<div class="messenger__contacts_item_inner">
-																<div class="messenger__contacts_item_photo">
-																	<img src="img/avatar-1.png" alt="">
-																</div>
-																<div class="messenger__ontacts_item_name">
-																	${name}
-																</div>
-															</div>
-															<div class="messenger__contacts_item_date">
-																Today. 5:32 PM
-															</div>
+			item.remove();
+			let li = document.createElement('li');
+			li.dataset.idThread = item._id;
+			li.className = "messenger__contacts_item";
+			li.insertAdjacentHTML('beforeend', `<div class="messenger__contacts_item_user">
+													<div class="messenger__contacts_item_inner">
+														<div class="messenger__contacts_item_photo">
+															<img src="img/avatar-1.png" alt="">
 														</div>
-														<div class="messenger__contacts_item_last-letter">
-															No messages yet.
-														</div>`);
-					console.dir(li);
-					ulAside.append(li);
-				} else {
-					let li = document.createElement('li');
-					li.thread = item._id;
-					li.dataset.idThread = item._id;
-					li.className = "messenger__contacts_item";
-					li.insertAdjacentHTML('beforeend', `<div class="messenger__contacts_item_user">
-															<div class="messenger__contacts_item_inner">
-																<div class="messenger__contacts_item_photo">
-																	<img src="img/avatar-1.png" alt="">
-																</div>
-																<div class="messenger__contacts_item_name">
-																	${name}
-																</div>
-															</div>
-															<div class="messenger__contacts_item_date">
-																Today. 5:32 PM
-															</div>
+														<div class="messenger__contacts_item_name">
+															${item.users[1].name}
 														</div>
-														<div class="messenger__contacts_item_last-letter">
-															
-														</div>`);
-					console.dir(li);
-					ulAside.append(li);
-				}
-			}		
+													</div>
+													<div class="messenger__contacts_item_date">
+														${item.created_at}
+													</div>
+												</div>`);
+			ulAside.append(li);	
 		});
 	}
 }
@@ -365,30 +285,30 @@ async function getMessage(event) {
   						let sendBlock = document.createElement('div');
   						sendBlock.className = 'messenger__send';
   						sendBlock.innerHTML = `<div class="messenger__send_mess">
-  													<div class="messenger__send_text">
-  														${item.last_message}
-  													</div>
   													<div class="messenger__send_avatar">
 														<img src="img/avatar-1.png" alt="">
 													</div>
+  													<div class="messenger__send_text">
+  														${item.message.body}
+  													</div>
   												</div>
   												<div class="messenger__send_date">
-  													${item.last_message}
+  													${item.created_at}
   												</div>`;
   						messageChat.append(sendBlock);
   					} else {
   						let recipientBlock = document.createElement('div');
   						recipientBlock.className = 'messenger__recipient';
   						recipientBlock.innerHTML = `<div class="messenger__recipient_mess">
-  														<div class="messenger__recipient_text">
-  															${item.last_message}
-  														</div>
   														<div class="messenger__recipient_avatar">
 															<img src="img/avatar-1.png" alt="">
 														</div>
+  														<div class="messenger__recipient_text">
+  															${item.message.body}
+  														</div>
   													</div>
   													<div class="messenger__recipient_date">
-  														${item.last_message}
+  														${item.created_at}
   													</div>`;
   						messageChat.append(recipientBlock);
   					}
@@ -422,6 +342,7 @@ sendLetter.onclick = () => {
 	createThread().then(data => console.log(data));
 }
 
+
 // is functioning
 function getIdForCabinet(event) {
 	let nameUser = document.querySelector('.recipient');
@@ -430,6 +351,7 @@ function getIdForCabinet(event) {
 	recipientIdUser = event.path[1].dataset.id;
 }
 tableUsers.addEventListener('click', getIdForCabinet);
+
 
 // is functioning
 async function createChat() {
@@ -446,6 +368,8 @@ async function createChat() {
 	if(arrMessages.length == 0) {
 		messageChat.innerHTML = '<div class="textInfo">Write anything!</div>';
 	}
+
+	await refreshAside();
 }
 createNewChat.addEventListener('click', createChat);
 
@@ -482,6 +406,9 @@ async function getIdThread(event) {
 				let sendBlock = document.createElement('div');
   					sendBlock.className = 'messenger__send';
   					sendBlock.innerHTML = `<div class="messenger__send_mess">
+  												<div class="messenger__send_avatar">
+													<img src="img/avatar-1.png" alt="">
+												</div>
 												<div class="messenger__send_text">
 													${item.body}
 												</div>
@@ -494,6 +421,9 @@ async function getIdThread(event) {
 				let recipientBlock = document.createElement('div');
   					recipientBlock.className = 'messenger__recipient';
   					recipientBlock.innerHTML = `<div class="messenger__recipient_mess">
+  													<div class="messenger__recipient_avatar">
+														<img src="img/avatar-1.png" alt="">
+													</div>
 													<div class="messenger__recipient_text">
 														${item.body}
 													</div>
